@@ -27,6 +27,7 @@
     $('#password').on("keyup", function(){
         returnIfPasswordsAreEqual();
     });
+    
     $('#password2').on("keyup", function(){
         returnIfPasswordsAreEqual();
     });
