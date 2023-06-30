@@ -4,7 +4,7 @@
 $server = '127.0.0.1';
 $db = 'TimeControl';
 $user = 'root';
-$password = 'ntamnqq&ef1224';
+$password = '';
 
 $con = mysqli_connect($server, $user, $password, $db);
 
