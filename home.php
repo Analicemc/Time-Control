@@ -1,6 +1,7 @@
 <?php
 #require_once 'card_tarefa';
-if (!isset($_SESSION['login']) && !isset($_SESSION['password'])){
+session_start();
+if (!isset($_SESSION['email']) && !isset($_SESSION['perfil_id'])){
     header("Location:index.php?erro=1");
 }
 

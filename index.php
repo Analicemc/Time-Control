@@ -1,9 +1,12 @@
 <?php
-if ($_GET['erro']) {
+if (isset($_GET['erro'])) {
     if ($_GET['erro'] == 1) {
-        $erroMessage = "Acesso negado";
-    } else {
-        $erroMessage = "";
+        $errorMessage = "Acesso negado";
+    } else if($_GET['erro'] == 2){
+        $errorMessage = 'E-mail ou senha inválidos';
+    }
+     else {
+        $errorMessage = "";
     }
 }
 ?>
@@ -14,6 +17,7 @@ if ($_GET['erro']) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
     <title>Document</title>
 </head>
 
@@ -23,9 +27,9 @@ if ($_GET['erro']) {
         <input type="text" name="password">
         <button type="submit">Entrar</button>
         <button><a href="cadastro_page.php">Cadastrar</a></button>
-        <span><?php if($erro){
-            echo $erro;
-            } ?></span>
+        <span class="errorMessage"><?php if(isset($_GET['erro'])){
+            echo $errorMessage;
+        } ?></span>
     </form>
 </body>
 

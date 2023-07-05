@@ -7,7 +7,7 @@
     <title>Cadastro - Time Control</title>
 </head>
 <body>
-    <form action="Usuario.php" method="post"> <!-- por padrão o cadastro é como usuário padrão -->
+    <form action="db/cad_usuario.php" method="post"> <!-- por padrão o cadastro é como usuário padrão -->
         <label>Nome
             <input required type="text" name="name">
         </label>

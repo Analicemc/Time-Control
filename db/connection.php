@@ -5,6 +5,7 @@ $server = '127.0.0.1';
 $db = 'TimeControl';
 $user = 'root';
 $password = '';
+$site = 'localhost/timecontrol';
 
 $con = mysqli_connect($server, $user, $password, $db);
 
