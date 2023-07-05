@@ -19,15 +19,21 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['perfil_id'])){
     <a href="db/sair.php">Sair</a>
 
     <main>
-        <section id="pendentes">
-        <?php buildTaskCard($t, $d) ?>
-        </section>
-        <section id="processo">
-
-        </section>
-        <section id="finalizadas">
-
-        </section>
+        <h2>Cadastro de tarefas</h2>
+        <form action="" method="post">
+            <label>Título
+                <input type="text">
+            </label>
+            <label>Descrição
+                <input type="text">
+            </label>
+            <label for="0">Data início
+                <input type="date" name="" id="">
+            </label>
+            <label for="">Hora início
+                <input type="time" name="" id="">
+            </label>
+        </form>
     </main>
 
 </body>
