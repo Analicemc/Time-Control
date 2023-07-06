@@ -17,6 +17,7 @@ if (mysqli_num_rows($result) > 0){
     $dados = mysqli_fetch_array($result);
     $_SESSION['nome']    = $dados['nome'];
     $_SESSION['email']   = $dados['email'];
+    $_SESSION
     $_SESSION['perfil_id']  = $dados['perfil_id'];
 
     header("Location:http://" . $site . '/home.php');

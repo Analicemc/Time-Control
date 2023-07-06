@@ -1,9 +1,8 @@
 <?php
 #require_once 'card_tarefa';
 session_start();
-if (!isset($_SESSION['email']) && !isset($_SESSION['perfil_id'])){
-    header("Location:index.php?erro=1");
-}
+
+require_once 'bloqueio.php';
 
 ?>
 <!DOCTYPE html>
@@ -20,19 +19,30 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['perfil_id'])){
 
     <main>
         <h2>Cadastro de tarefas</h2>
-        <form action="" method="post">
+        <form action="db/cad_tarefa.php" method="post">
             <label>Título
-                <input type="text">
+                <input type="text" name="">
             </label>
             <label>Descrição
-                <input type="text">
+                <textarea name="" cols="30" rows="10"></textarea>
             </label>
-            <label for="0">Data início
-                <input type="date" name="" id="">
+            <label>Data início
+                <input type="date" name="">
             </label>
-            <label for="">Hora início
-                <input type="time" name="" id="">
+            <label>Hora início
+                <input type="time" name="">
             </label>
+            <label>Data fim
+                <input type="date" name="">
+            </label>
+            <label>Hora fim
+                <input type="time" name="">
+            </label>
+            <select name="">
+                <option value="1">Baixa</option>
+                <option value="2">Média</option>
+                <option value="3">Alta</option>
+            </select>
         </form>
     </main>
 

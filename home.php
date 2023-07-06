@@ -1,10 +1,6 @@
 <?php
+require_once 'bloqueio.php';
 #require_once 'card_tarefa';
-session_start();
-if (!isset($_SESSION['email']) && !isset($_SESSION['perfil_id'])){
-    header("Location:index.php?erro=1");
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
