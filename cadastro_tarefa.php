@@ -3,6 +3,11 @@
 session_start();
 
 require_once 'bloqueio.php';
+require_once 'db/connection.php';
+
+$sql = "SELECT * FROM categoria_tarefa";
+$result = mysqli_query($con, $sql);
+$categorias = mysqli_fetch_array($result); #todas as categorias estarão nesse array
 
 ?>
 <!DOCTYPE html>
@@ -37,6 +42,15 @@ require_once 'bloqueio.php';
             </label>
             <label>Hora fim
                 <input type="time" name="">
+            </label>
+            <label>Categorias
+                <select name="" id="">
+                    <?php
+                        for($i; $i <= count($categorias); $i++){
+                            echo '<option value="$i">$categorias[$i]</option>';
+                        }
+                    ?>
+                </select>
             </label>
             <select name="">
                 <option value="1">Baixa</option>
