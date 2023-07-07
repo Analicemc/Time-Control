@@ -1,6 +1,17 @@
 <?php
+require_once 'db/connection.php';
 require_once 'bloqueio.php';
 #require_once 'card_tarefa';
+
+if ($_SESSION['perfil_id'] == 1){
+    $sql = "SELECT * FROM tarefa";
+}else if ($_SESSION['perfil_id'] == 2){
+    $sessionUser = $_SESSION['userid'];
+    $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser";
+}
+
+$tarefas = mysqli_query($con, $sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,7 +27,11 @@ require_once 'bloqueio.php';
 
     <main>
         <section id="pendentes">
-        <?php buildTaskCard($t, $d) ?>
+        <?php
+        foreach($tarefas as $taf){
+            echo $taf['titulo'];
+        }
+        #buildTaskCard($t, $d) ?>
         </section>
         <section id="processo">
 

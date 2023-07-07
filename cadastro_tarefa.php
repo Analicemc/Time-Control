@@ -1,13 +1,11 @@
 <?php
 #require_once 'card_tarefa';
-session_start();
 
 require_once 'bloqueio.php';
 require_once 'db/connection.php';
 
 $sql = "SELECT * FROM categoria_tarefa";
-$result = mysqli_query($con, $sql);
-$categorias = mysqli_fetch_array($result); #todas as categorias estarão nesse array
+$categorias = mysqli_query($con, $sql);
 
 ?>
 <!DOCTYPE html>
@@ -26,37 +24,38 @@ $categorias = mysqli_fetch_array($result); #todas as categorias estarão nesse a
         <h2>Cadastro de tarefas</h2>
         <form action="db/cad_tarefa.php" method="post">
             <label>Título
-                <input type="text" name="">
+                <input type="text" name="titulo">
             </label>
             <label>Descrição
-                <textarea name="" cols="30" rows="10"></textarea>
+                <textarea name="descricao" cols="30" rows="10"></textarea>
             </label>
             <label>Data início
-                <input type="date" name="">
+                <input type="date" name="data_inicio">
             </label>
             <label>Hora início
-                <input type="time" name="">
+                <input type="time" name="hora_inicio">
             </label>
             <label>Data fim
-                <input type="date" name="">
+                <input type="date" name="data_fim">
             </label>
             <label>Hora fim
-                <input type="time" name="">
+                <input type="time" name="hora_fim">
             </label>
             <label>Categorias
-                <select name="" id="">
+                <select name="categorias" id="" multiple>
                     <?php
-                        for($i; $i <= count($categorias); $i++){
-                            echo '<option value="$i">$categorias[$i]</option>';
+                        foreach ($categorias as $cat) {
+                            echo '<option value='. $cat['id'] .'>'.$cat['nome'].'<option>';
                         }
                     ?>
                 </select>
             </label>
-            <select name="">
+            <select name="prioridade">
                 <option value="1">Baixa</option>
                 <option value="2">Média</option>
                 <option value="3">Alta</option>
             </select>
+            <button type="submit">Salvar</button>
         </form>
     </main>
 

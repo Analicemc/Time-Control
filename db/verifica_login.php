@@ -15,16 +15,16 @@ $result = mysqli_query($con, $query);
 
 if (mysqli_num_rows($result) > 0){
     $dados = mysqli_fetch_array($result);
-    $_SESSION['nome']    = $dados['nome'];
-    $_SESSION['email']   = $dados['email'];
-    $_SESSION
-    $_SESSION['perfil_id']  = $dados['perfil_id'];
+    $_SESSION['nome']      = $dados['nome'];
+    $_SESSION['email']     = $dados['email'];
+    $_SESSION['userid']    = $dados['id'];
+    $_SESSION['perfil_id'] = $dados['perfil_id'];
 
     header("Location:http://" . $site . '/home.php');
 }else{
     echo "<script>alert('Login ou senha inválido, tente novamente')";
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
+    unset($_SESSION['nome']);
+    unset($_SESSION['email']);
     echo $login;
     echo $senha;
     header("Location:http://" . $site . '/index.php?erro=2');;
