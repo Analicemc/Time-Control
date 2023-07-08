@@ -4,10 +4,10 @@ require_once 'db/bloqueio.php';
 require_once 'card_tarefa.php';
 
 if ($_SESSION['perfil_id'] == 1){
-    $sql = "SELECT * FROM tarefa ORDER BY data_inicio";
+    $sql = "SELECT * FROM tarefa t, usuario u WHERE t.usuario_id = u.id ORDER BY data_inicio";
 }else if ($_SESSION['perfil_id'] == 2){
     $sessionUser = $_SESSION['userid'];
-    $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser ORDER BY data_inicio";
+    $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser ORDER BY data_inicio ASC";
 }
 
 $tarefas = mysqli_query($con, $sql);
@@ -30,7 +30,11 @@ $tarefas = mysqli_query($con, $sql);
         <section id="pendentes">
         <?php
         foreach($tarefas as $tar){
-            echo buildTaskCard($tar);
+            if (key_exists('nome', $tar)) {
+                echo buildTaskCard($tar, $tar['nome']);
+            }else{
+                echo buildTaskCard($tar);
+            }
         }
         ?>
         </section>

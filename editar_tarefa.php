@@ -5,7 +5,9 @@ require_once 'db/connection.php';
 
 $tarefa_id = $_GET['id'];
 
-$sql_tarefa = "SELECT * from tarefa where id = $tarefa_id";
+$sessionUser = $_SESSION['userid'];
+$sql_tarefa = "SELECT * from tarefa where id = $tarefa_id and usuario_id = $sessionUser";
+
 $tarefa = mysqli_fetch_assoc(mysqli_query($con, $sql_tarefa));
 
 $sql_categoria = "SELECT * FROM categoria_tarefa";
@@ -24,7 +26,7 @@ $categorias = mysqli_query($con, $sql_categoria);
 
     <main>
         <h2>Editar tarefa</h2>
-        <form action="db/update_tarefa.php" method="post">
+        <form action="db/update_tarefa.php?id=<?= $tarefa_id ?>" method="post">
             <label>Título
                 <input type="text" value="<?= $tarefa['titulo'] ?>" name="titulo">
             </label>
@@ -45,7 +47,7 @@ $categorias = mysqli_query($con, $sql_categoria);
             </label>
             <label>Categorias
                 <select data-live-search='true'
-                name="categorias" id="" multiple>
+                name="categorias[]" id="" multiple>
                     <?php
                         foreach ($categorias as $cat) {
                             echo '<option value='. $cat['id'] .'>'.$cat['nome'].'<option>';
@@ -53,11 +55,18 @@ $categorias = mysqli_query($con, $sql_categoria);
                     ?>
                 </select>
             </label>
-            <select name="prioridade">
-                <option value="1">Baixa</option>
-                <option value="2">Média</option>
-                <option value="3">Alta</option>
-            </select>
+            <label>
+                <input required type="radio" name="status_tarefa" value="1">Pendente
+                <input required type="radio" name="status_tarefa" value="2">Em andamento
+                <input required type="radio" name="status_tarefa" value="3">Finalizada
+            </label>
+            <label>
+                <select name="prioridade">
+                    <option value="1">Baixa</option>
+                    <option selected value="2">Média</option>
+                    <option value="3">Alta</option>
+                </select>
+            </label>
             <button type="submit">Salvar</button>
         </form>
     </main>

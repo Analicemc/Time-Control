@@ -24,13 +24,13 @@ $categorias = mysqli_query($con, $sql);
         <h2>Cadastro de tarefas</h2>
         <form action="db/cad_tarefa.php" method="post">
             <label>Título
-                <input type="text" name="titulo">
+                <input required type="text" name="titulo">
             </label>
             <label>Descrição
                 <textarea name="descricao" cols="30" rows="10"></textarea>
             </label>
             <label>Data início
-                <input type="date" name="data_inicio">
+                <input required type="date" name="data_inicio">
             </label>
             <label>Hora início
                 <input type="time" name="hora_inicio">
@@ -42,7 +42,7 @@ $categorias = mysqli_query($con, $sql);
                 <input type="time" name="hora_fim">
             </label>
             <label>Categorias
-                <select name="categorias" id="" multiple>
+                <select name="categorias[]" id="" multiple>
                     <?php
                         foreach ($categorias as $cat) {
                             echo '<option value='. $cat['id'] .'>'.$cat['nome'].'<option>';
