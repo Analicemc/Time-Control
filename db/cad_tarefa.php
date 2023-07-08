@@ -2,7 +2,7 @@
 # cadastra tarefas
 require_once('connection.php');
 
-require_once './bloqueio.php';
+require_once 'bloqueio.php';
 
 $titulo = $_POST['titulo'];
 $descricao = $_POST['descricao'];

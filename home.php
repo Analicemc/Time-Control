@@ -1,13 +1,13 @@
 <?php
 require_once 'db/connection.php';
-require_once 'bloqueio.php';
-#require_once 'card_tarefa';
+require_once 'db/bloqueio.php';
+require_once 'card_tarefa.php';
 
 if ($_SESSION['perfil_id'] == 1){
-    $sql = "SELECT * FROM tarefa";
+    $sql = "SELECT * FROM tarefa ORDER BY data_inicio";
 }else if ($_SESSION['perfil_id'] == 2){
     $sessionUser = $_SESSION['userid'];
-    $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser";
+    $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser ORDER BY data_inicio";
 }
 
 $tarefas = mysqli_query($con, $sql);
@@ -18,6 +18,7 @@ $tarefas = mysqli_query($con, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Tarefas - Time Control</title>
 </head>
 <body>
@@ -28,10 +29,10 @@ $tarefas = mysqli_query($con, $sql);
     <main>
         <section id="pendentes">
         <?php
-        foreach($tarefas as $taf){
-            echo $taf['titulo'];
+        foreach($tarefas as $tar){
+            echo buildTaskCard($tar);
         }
-        #buildTaskCard($t, $d) ?>
+        ?>
         </section>
         <section id="processo">
 
