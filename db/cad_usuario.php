@@ -14,5 +14,5 @@ $result = mysqli_query($con, $sql);
 var_dump($result);
 
 if($result == true){
-    header("Location:../index.php");
+    header("Location:../index.php?msg=2");
 }

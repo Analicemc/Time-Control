@@ -9,6 +9,20 @@ if (isset($_GET['erro'])) {
         $errorMessage = "";
     }
 }
+
+if(isset($_GET['msg'])){
+    if($_GET['msg'] == 1){
+        # logout realizado
+        echo "<script>
+            window.alert('Você saiu da sua conta');
+        </script>";
+    }else if ($_GET['msg'] == 2){
+        # cadastro realizado
+        echo "<script>
+            window.alert('Cadastro realizado com sucesso!');
+        </script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
