@@ -1,4 +1,5 @@
 <?php
+# Define mensagens de erro
 if (isset($_GET['erro'])) {
     if ($_GET['erro'] == 1) {
         $errorMessage = "Acesso negado";
@@ -10,6 +11,7 @@ if (isset($_GET['erro'])) {
     }
 }
 
+# Define mensagens de alerta
 if(isset($_GET['msg'])){
     if($_GET['msg'] == 1){
         # logout realizado
