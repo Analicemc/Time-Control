@@ -6,9 +6,14 @@ require_once 'db/connection.php';
 $tarefa_id = $_GET['id'];
 
 $sessionUser = $_SESSION['userid'];
-$sql_tarefa = "SELECT * from tarefa where id = $tarefa_id and usuario_id = $sessionUser";
+if($_SESSION['perfil_id'] == "1"){
+    $sql_tarefa = "SELECT * from tarefa where id = $tarefa_id";
+}else{
+    $sql_tarefa = "SELECT * from tarefa where id = $tarefa_id and usuario_id = $sessionUser";
+}
 
-$tarefa = mysqli_fetch_assoc(mysqli_query($con, $sql_tarefa));
+$query = mysqli_query($con, $sql_tarefa);
+$tarefa = mysqli_fetch_array($query);
 
 $sql_categoria = "SELECT * FROM categoria_tarefa";
 $categorias = mysqli_query($con, $sql_categoria);

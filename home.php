@@ -4,7 +4,9 @@ require_once 'db/bloqueio.php';
 require_once 'card_tarefa.php';
 
 if ($_SESSION['perfil_id'] == 1){
-    $sql = "SELECT * FROM tarefa t, usuario u WHERE t.usuario_id = u.id ORDER BY data_inicio";
+    $sql = "SELECT tarefa.*, usuario.nome from tarefa JOIN usuario ON
+    tarefa.usuario_id = usuario.id
+    ORDER BY data_inicio";
 }else if ($_SESSION['perfil_id'] == 2){
     $sessionUser = $_SESSION['userid'];
     $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser ORDER BY data_inicio ASC";
