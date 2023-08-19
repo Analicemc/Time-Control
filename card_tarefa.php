@@ -6,6 +6,7 @@ function buildTaskCard($task, $userName = ""): string
     $data_fim = formatDateFromDB($task['data_fim']);
     return <<<card
         <div class="card" style="width: 18rem;">
+        <h5 class="card-header" style='background-color: {$color}'></h5>
         <div class="card-body">
         <h5 class="card-title">{$task['titulo']}</h5>
         <p class="card-text">{$userName}</p>

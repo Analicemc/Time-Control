@@ -6,10 +6,10 @@ require_once 'card_tarefa.php';
 if ($_SESSION['perfil_id'] == 1){
     $sql = "SELECT tarefa.*, usuario.nome from tarefa JOIN usuario ON
     tarefa.usuario_id = usuario.id
-    ORDER BY data_inicio";
+    ORDER BY data_inicio, hora_inicio ASC";
 }else if ($_SESSION['perfil_id'] == 2){
     $sessionUser = $_SESSION['userid'];
-    $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser ORDER BY data_inicio ASC";
+    $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser ORDER BY data_inicio, hora_inicio ASC";
 }
 
 $tarefas = mysqli_query($con, $sql);

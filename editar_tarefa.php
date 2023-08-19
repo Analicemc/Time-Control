@@ -18,6 +18,17 @@ $tarefa = mysqli_fetch_array($query);
 $sql_categoria = "SELECT * FROM categoria_tarefa";
 $categorias = mysqli_query($con, $sql_categoria);
 
+$sql_status = "SELECT * FROM status_tarefa";
+$status = mysqli_query($con, $sql_status);
+
+$sql_prioridades = "SELECT * FROM prioridade_tarefa";
+$prioridades = mysqli_query($con, $sql_prioridades);
+
+
+// $sql_categorias_selecionadas = "SELECT tarefa_categoria_tarefa.categoria_tarefa_id from tarefa_categoria_tarefa where tarefa_id = $tarefa_id";
+// $query = mysqli_query($con, $sql_categorias_selecionadas);
+// $categorias_selecionadas = mysqli_fetch_all($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +36,13 @@ $categorias = mysqli_query($con, $sql_categoria);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar tarefa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Tarefas - Time Control</title>
 </head>
 <body>
+    <a href="cadastro_tarefa.php">Cadastrar tarefa</a>
+    <a href="home.php">Listar tarefas</a>
+    <a href="db/sair.php">Sair</a>
 
     <main>
         <h2>Editar tarefa</h2>
@@ -55,21 +70,31 @@ $categorias = mysqli_query($con, $sql_categoria);
                 name="categorias[]" id="" multiple>
                     <?php
                         foreach ($categorias as $cat) {
-                            echo '<option value='. $cat['id'] .'>'.$cat['nome'].'<option>';
+                            echo "<option value='${cat['id']}'>
+                                    ${cat['nome']}
+                            </option>";
                         }
                     ?>
                 </select>
             </label>
             <label>
-                <input required type="radio" name="status_tarefa" value="1">Pendente
-                <input required type="radio" name="status_tarefa" value="2">Em andamento
-                <input required type="radio" name="status_tarefa" value="3">Finalizada
+                <?php
+                    foreach ($status as $sta){
+                        echo "<input type='radio' name='status_tarefa' value='${sta['id']}'>
+                            ${sta['nome']}
+                        </input>";
+                    }
+                ?>
             </label>
             <label>
                 <select name="prioridade">
-                    <option value="1">Baixa</option>
-                    <option selected value="2">Média</option>
-                    <option value="3">Alta</option>
+                    <?php
+                        foreach ($prioridades as $pri){
+                            echo "<option value='${pri['id']}' $selected>
+                                ${pri['nome']}
+                            </option>";
+                        }
+                    ?>
                 </select>
             </label>
             <button type="submit">Salvar</button>
