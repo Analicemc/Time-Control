@@ -1,5 +1,4 @@
 <?php
-#require_once 'card_tarefa';
 
 require_once 'db/bloqueio.php';
 require_once 'db/connection.php';
@@ -36,7 +35,7 @@ $categorias = mysqli_query($con, $sql);
                 <input type="time" name="hora_inicio">
             </label>
             <label>Data fim
-                <input type="date" name="data_fim">
+                <input required type="date" name="data_fim">
             </label>
             <label>Hora fim
                 <input type="time" name="hora_fim">

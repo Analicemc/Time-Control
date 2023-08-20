@@ -24,11 +24,6 @@ $status = mysqli_query($con, $sql_status);
 $sql_prioridades = "SELECT * FROM prioridade_tarefa";
 $prioridades = mysqli_query($con, $sql_prioridades);
 
-
-// $sql_categorias_selecionadas = "SELECT tarefa_categoria_tarefa.categoria_tarefa_id from tarefa_categoria_tarefa where tarefa_id = $tarefa_id";
-// $query = mysqli_query($con, $sql_categorias_selecionadas);
-// $categorias_selecionadas = mysqli_fetch_all($query);
-
 ?>
 
 <!DOCTYPE html>
