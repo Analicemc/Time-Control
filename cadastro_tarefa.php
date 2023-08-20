@@ -42,7 +42,7 @@ $categorias = mysqli_query($con, $sql);
                 <input type="time" name="hora_fim">
             </label>
             <label>Categorias
-                <select name="categoria" id="" multiple>
+                <select name="categoria" id="">
                     <?php
                         foreach ($categorias as $cat) {
                             echo '<option value='. $cat['id'] .'>'.$cat['nome'].'<option>';
