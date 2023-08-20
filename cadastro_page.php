@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <title>Cadastro - Time Control</title>
-</head>
+<?php require_once 'head.php' ?>
 <body>
     <form action="db/cad_usuario.php" method="post"> <!-- por padrão o cadastro é como usuário padrão -->
         <label>Nome

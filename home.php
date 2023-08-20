@@ -8,7 +8,7 @@ $busca = $_POST['busca'] ?? '';
 if ($_SESSION['perfil_id'] == 1){
     $sql = "SELECT tarefa.*, usuario.nome from tarefa JOIN usuario ON
     tarefa.usuario_id = usuario.id
-    ORDER BY data_inicio, hora_inicio ASC WHERE tarefa.titulo LIKE '%$busca%'";
+    WHERE tarefa.titulo LIKE '%$busca%' ORDER BY data_inicio, hora_inicio ASC";
 }else if ($_SESSION['perfil_id'] == 2){
     $sessionUser = $_SESSION['userid'];
     $sql = "SELECT * FROM tarefa WHERE usuario_id = $sessionUser AND tarefa.titulo LIKE '%$busca%' ORDER BY data_inicio, hora_inicio ASC";
@@ -19,18 +19,14 @@ $tarefas = mysqli_query($con, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Tarefas - Time Control</title>
-</head>
+<?php require_once 'head.php' ?>
 <body>
     <a href="cadastro_tarefa.php">Cadastrar tarefa</a>
     <a href="home.php">Listar tarefas</a>
     <a href="db/sair.php">Sair</a>
 
     <main>
+        <h2>Olá <?= $_SESSION['nome'] ?></h2>
         <form action="home.php" method="post">
             <input name='busca' type="text" placeholder="Digite para buscar">
             <button type="submit" class='btn btn-success'>Buscar</button>
