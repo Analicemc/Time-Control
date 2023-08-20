@@ -1,6 +1,6 @@
 <?php
 
-function buildTaskCard($task, $userName = ""): string
+function buildTaskCard($task, $userName = "", $color): string
 {
     $data_inicio = formatDateFromDB($task['data_inicio']);
     $data_fim = formatDateFromDB($task['data_fim']);

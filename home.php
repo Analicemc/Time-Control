@@ -31,6 +31,10 @@ $tarefas = mysqli_query($con, $sql);
     <main>
         <section id="pendentes">
         <?php
+        $sql_cores = "SELECT id, cor from categoria_tarefa";
+        $query = mysqli_query($con, $sql_cores);
+        $cores = mysqli_fetch_assoc($query);
+        var_dump($cores);
         foreach($tarefas as $tar){
             if (key_exists('nome', $tar)) {
                 echo buildTaskCard($tar, $tar['nome']);
