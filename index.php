@@ -31,15 +31,20 @@ if(isset($_GET['msg'])){
 <html lang="pt-br">
 <?php require_once 'head.php' ?>
 <body>
-    <form action="db/verifica_login.php" method="post">
-        <input type="text" name="login">
-        <input type="text" name="password">
-        <button type="submit">Entrar</button>
-        <button><a href="cadastro_page.php">Cadastrar</a></button>
-        <span class="errorMessage"><?php if(isset($_GET['erro'])){
-            echo $errorMessage;
-        } ?></span>
-    </form>
+    <main>
+        <div class="mb-3">
+            <form action="db/verifica_login.php" method="post">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" name="login" placeholder="nome@email.com">
+                <input type="text" name="password">
+                <button class="btn btn-primary mb-3" type="submit">Entrar</button>
+                <button class="btn btn-success"><a href="cadastro_page.php">Cadastrar</a></button>
+                <span class="errorMessage"><?php if(isset($_GET['erro'])){
+                    echo $errorMessage;
+                } ?></span>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>

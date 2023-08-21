@@ -21,9 +21,7 @@ $tarefas = mysqli_query($con, $sql);
 <html lang="pt-br">
 <?php require_once 'head.php' ?>
 <body>
-    <a href="cadastro_tarefa.php">Cadastrar tarefa</a>
-    <a href="home.php">Listar tarefas</a>
-    <a href="db/sair.php">Sair</a>
+<?php require_once 'header.php' ?>
 
     <main>
         <h2>Olá <?= $_SESSION['nome'] ?></h2>
@@ -52,6 +50,6 @@ $tarefas = mysqli_query($con, $sql);
 
         </section>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

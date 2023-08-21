@@ -11,9 +11,7 @@ $categorias = mysqli_query($con, $sql);
 <html lang="pt-br">
 <?php require_once 'head.php' ?>
 <body>
-    <a href="cadastro_tarefa.php">Cadastrar tarefa</a>
-    <a href="home.php">Listar tarefas</a>
-    <a href="db/sair.php">Sair</a>
+<?php require_once 'header.php' ?>
 
     <main>
         <h2>Cadastro de tarefas</h2>
@@ -40,12 +38,14 @@ $categorias = mysqli_query($con, $sql);
                 <select name="categoria" id="">
                     <?php
                         foreach ($categorias as $cat) {
-                            echo '<option value='. $cat['id'] .'>'.$cat['nome'].'<option>';
+                            echo "<option value='${cat['id']}'>
+                                    ${cat['nome']}
+                            </option>";
                         }
                     ?>
                 </select>
             </label>
-            <select name="prioridade">
+            <select name="prioridade" required>
                 <option value="1">Baixa</option>
                 <option value="2">Média</option>
                 <option value="3">Alta</option>
@@ -53,6 +53,6 @@ $categorias = mysqli_query($con, $sql);
             <button type="submit">Salvar</button>
         </form>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

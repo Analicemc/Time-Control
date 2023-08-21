@@ -30,34 +30,32 @@ $prioridades = mysqli_query($con, $sql_prioridades);
 <html lang="pt-br">
 <?php require_once 'head.php' ?>
 <body>
-    <a href="cadastro_tarefa.php">Cadastrar tarefa</a>
-    <a href="home.php">Listar tarefas</a>
-    <a href="db/sair.php">Sair</a>
+<?php require_once 'header.php' ?>
 
     <main>
         <h2>Editar tarefa</h2>
         <form action="db/update_tarefa.php?id=<?= $tarefa_id ?>" method="post">
             <label>Título
-                <input type="text" value="<?= $tarefa['titulo'] ?>" name="titulo">
+                <input type="text" value="<?= $tarefa['titulo'] ?>" name="titulo" required>
             </label>
             <label>Descrição
                 <textarea name="descricao" cols="30" rows="10"><?= $tarefa['descricao'] ?></textarea>
             </label>
             <label>Data início
-                <input type="date" value="<?= $tarefa['data_inicio'] ?>" name="data_inicio">
+                <input type="date" value="<?= $tarefa['data_inicio'] ?>" name="data_inicio" required>
             </label>
             <label>Hora início
                 <input type="time" value="<?= $tarefa['hora_inicio'] ?>" name="hora_inicio">
             </label>
             <label>Data fim
-                <input type="date" value="<?= $tarefa['data_fim'] ?>" name="data_fim">
+                <input type="date" value="<?= $tarefa['data_fim'] ?>" name="data_fim" required>
             </label>
             <label>Hora fim
                 <input type="time" value="<?= $tarefa['hora_fim'] ?>" name="hora_fim">
             </label>
             <label>Categorias
                 <select data-live-search='true'
-                name="categorias[]" id="" multiple>
+                name="categoria" id="">
                     <?php
                         foreach ($categorias as $cat) {
                             echo "<option value='${cat['id']}'>
@@ -90,6 +88,6 @@ $prioridades = mysqli_query($con, $sql_prioridades);
             <button type="submit">Salvar</button>
         </form>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
