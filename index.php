@@ -3,22 +3,21 @@
 if (isset($_GET['erro'])) {
     if ($_GET['erro'] == 1) {
         $errorMessage = "Acesso negado";
-    } else if($_GET['erro'] == 2){
+    } else if ($_GET['erro'] == 2) {
         $errorMessage = 'E-mail ou senha inválidos';
-    }
-     else {
+    } else {
         $errorMessage = "";
     }
 }
 
 # Define mensagens de alerta
-if(isset($_GET['msg'])){
-    if($_GET['msg'] == 1){
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] == 1) {
         # logout realizado
         echo "<script>
             window.alert('Você saiu da sua conta');
         </script>";
-    }else if ($_GET['msg'] == 2){
+    } else if ($_GET['msg'] == 2) {
         # cadastro realizado
         echo "<script>
             window.alert('Cadastro realizado com sucesso!');
@@ -30,18 +29,25 @@ if(isset($_GET['msg'])){
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php require_once 'head.php' ?>
+
 <body>
     <main>
-        <div class="mb-3">
+        <div class="col-5" id="login_form">
             <form action="db/verifica_login.php" method="post">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="login" placeholder="nome@email.com">
-                <input type="text" name="password">
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="login" placeholder="nome@email.com">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="text" class="form-control" id="password" name="password">
+                </div>
                 <button class="btn btn-primary mb-3" type="submit">Entrar</button>
-                <button class="btn btn-success"><a href="cadastro_page.php">Cadastrar</a></button>
-                <span class="errorMessage"><?php if(isset($_GET['erro'])){
-                    echo $errorMessage;
-                } ?></span>
+                <button class="btn btn-success mb-3"><a href="cadastro_page.php">Cadastrar</a></button>
+                <span class="errorMessage"><?php if (isset($_GET['erro'])) {
+                                                echo $errorMessage;
+                                            } ?></span>
             </form>
         </div>
     </main>

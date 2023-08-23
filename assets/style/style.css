@@ -1,3 +1,14 @@
 .errorMessage{
     color: red;
 }
+
+main{
+    height: 100vh;
+}
+
+#login_form{
+    margin: auto;
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 15px;
+}
